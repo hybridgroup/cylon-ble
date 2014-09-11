@@ -2,10 +2,10 @@
 
 var module = source("cylon-ble");
 
-var Adaptor = source('adaptor'),
+var Central = source('central'),
     Driver = source('driver');
 
-describe("Cylon.Ble", function() {
+describe("Cylon.BLE", function() {
   describe("#register", function() {
     it("should be a function", function() {
       expect(module.register).to.be.a('function');
@@ -20,8 +20,8 @@ describe("Cylon.Ble", function() {
   });
 
   describe("#adaptor", function() {
-    it("returns an instance of the Adaptor", function() {
-      expect(module.adaptor()).to.be.instanceOf(Adaptor);
+    it("returns an instance of the Central", function() {
+      expect(module.adaptor()).to.be.instanceOf(Central);
     });
   });
 });
