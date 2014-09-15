@@ -3,13 +3,16 @@ var noble = require('noble');
 noble.on('stateChange', function(state) {
   console.log(state);
   if (state === 'poweredOn') {
+    console.log("start scanning...");
     noble.startScanning();
   } else {
+    console.log("stop scanning...");
     noble.stopScanning();
   }
 });
 
 noble.on('discover', function(peripheral) {
+  console.log(peripheral);
   console.log('peripheral discovered (' + peripheral.uuid+ '):');
   console.log('\thello my local name is:');
   console.log('\t\t' + peripheral.advertisement.localName);
