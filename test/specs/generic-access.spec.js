@@ -1,9 +1,9 @@
 'use strict';
 
-var GenericAccess = source("generic-access");
+var BLEGenericAccess = source("generic-access");
 
-describe("Cylon.Drivers.GenericAccess", function() {
-  var driver = new GenericAccess({
+describe("Cylon.Drivers. BLE.BLEGenericAccess", function() {
+  var driver = new BLEGenericAccess({
     device: { connection: 'connect' }
   });
 

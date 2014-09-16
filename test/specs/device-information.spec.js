@@ -1,9 +1,9 @@
 'use strict';
 
-var DeviceInformation = source("device-information");
+var BLEDeviceInformation = source("device-information");
 
-describe("Cylon.Drivers.DeviceInformation", function() {
-  var driver = new DeviceInformation({
+describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
+  var driver = new BLEDeviceInformation({
     device: { connection: 'connect' }
   });
 

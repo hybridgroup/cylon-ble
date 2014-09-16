@@ -1,9 +1,9 @@
 'use strict';
 
-var BatteryService = source("battery-service");
+var BLEBatteryService = source("battery-service");
 
-describe("Cylon.Drivers.BatteryService", function() {
-  var driver = new BatteryService({
+describe("Cylon.Drivers.BLE.BLEBatteryService", function() {
+  var driver = new BLEBatteryService({
     device: { connection: 'connect' }
   });
 

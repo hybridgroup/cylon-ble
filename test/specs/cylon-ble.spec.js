@@ -3,9 +3,9 @@
 var module = source("cylon-ble");
 
 var Central = source('central'),
-    BatteryService = source('battery-service'),
-    DeviceInformation = source('device-information'),
-    GenericAccess = source('generic-access')
+    BLEBatteryService = source('battery-service'),
+    BLEDeviceInformation = source('device-information'),
+    BLEGenericAccess = source('generic-access')
 
 describe("Cylon.BLE", function() {
   describe("#register", function() {
@@ -17,22 +17,22 @@ describe("Cylon.BLE", function() {
   describe("#driver", function() {
     var opts = { device: {}, extraParams: {} };
 
-    it("can instantiate a new BatteryService", function() {
-      opts.name = 'battery-service';
+    it("can instantiate a new BLEBatteryService", function() {
+      opts.name = 'ble-battery-service';
       var driver = module.driver(opts);
-      expect(driver).to.be.an.instanceOf(BatteryService);
+      expect(driver).to.be.an.instanceOf(BLEBatteryService);
     });
 
-    it("can instantiate a new DeviceInformation", function() {
-      opts.name = 'device-information';
+    it("can instantiate a new BLEDeviceInformation", function() {
+      opts.name = 'ble-device-information';
       var driver = module.driver(opts);
-      expect(driver).to.be.an.instanceOf(DeviceInformation);
+      expect(driver).to.be.an.instanceOf(BLEDeviceInformation);
     });
 
-    it("can instantiate a new GenericAccess", function() {
-      opts.name = 'generic-access';
+    it("can instantiate a new BLEGenericAccess", function() {
+      opts.name = 'ble-generic-access';
       var driver = module.driver(opts);
-      expect(driver).to.be.an.instanceOf(GenericAccess);
+      expect(driver).to.be.an.instanceOf(BLEGenericAccess);
     });
   });
 
