@@ -3,7 +3,7 @@
 Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics and
 physical computing using Node.js
 
-This repository contains the Cylon adaptor for Bluetooth Low Energy (LE).
+This repository contains the Cylon adaptor/drivers to connect to Bluetooth Low Energy (LE) peripherals. It uses the Noble node module (https://github.com/sandeepmistry/noble) created by [@sandeepmistry](https://github.com/sandeepmistry) thank you!
 
 For more information about Cylon, check out the repo at
 https://github.com/hybridgroup/cylon
@@ -20,11 +20,19 @@ Install the module with: `npm install cylon-ble`
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'ble', adaptor: 'ble' },
-  device: {name: 'ble', driver: 'ble'},
+  connection: { name: 'wiced', adaptor: 'ble', uuid: '207377654321'},
+  device: {name: 'battery', driver: 'ble-battery-service'},
 
   work: function(my) {
-    // provide an example of your module here
+    every((1).second(), function() {
+      my.battery.getBatteryLevel(function(err, data){
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("BatteryLevel:", data);
+        }
+      });
+    });
   }
 }).start();
 ```
