@@ -6,13 +6,13 @@ Cylon.robot({
 
   work: function(my) {
     after((1).second(), function() {
-    	my.generic.getServiceCharacteristic(function(err, data){
-    		if (err) {
-    			console.log(err);
-    		} else {
-    			console.log(data.toString());
-    		}
-    	});
+      my.generic.getServiceCharacteristic(function(err, data){
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(data.toString());
+        }
+      });
     });
   }
 }).start();
