@@ -3,7 +3,7 @@
 var module = source("cylon-ble");
 
 var Central = source('central'),
-    Driver = source('driver');
+    GenericAccess = source('generic-access');
 
 describe("Cylon.BLE", function() {
   describe("#register", function() {
@@ -13,9 +13,9 @@ describe("Cylon.BLE", function() {
   });
 
   describe("#driver", function() {
-    it("returns an instance of the Driver", function() {
+    it("returns an instance of the GenericAccess driver", function() {
       var args = { device: {} };
-      expect(module.driver(args)).to.be.instanceOf(Driver);
+      expect(module.driver(args)).to.be.instanceOf(GenericAccess);
     });
   });
 
