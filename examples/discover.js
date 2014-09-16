@@ -1,4 +1,5 @@
 var Cylon = require('cylon');
+var Async = require('async');
 
 Cylon.robot({
   connection: { name: 'bluetooth', adaptor: 'ble', uuid: '207377654321'},
@@ -8,28 +9,28 @@ Cylon.robot({
 
   work: function(my) {
     after((1).second(), function() {
-      // my.generic.getDeviceName(function(err, data){
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log("Name:", data.toString());
-      //   }
-      // });
+      Async.series([
+        function(callback) {
+          my.generic.getDeviceName(function(err, data){
+            callback(err, data);
+          });
+        },
 
-      // my.deviceInfo.getManufacturerName(function(err, data){
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log("ManufacturerName:", data.toString());
-      //   }
-      // });
+        function(callback) {
+          my.deviceInfo.getManufacturerName(function(err, data){
+            callback(err, data);
+          });
+        },
 
-      my.battery.getBatteryLevel(function(err, data){
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("BatteryLevel:", data);
+        function(callback) {
+          my.battery.getBatteryLevel(function(err, data){
+            callback(err, data);
+          });
         }
+      ],
+
+      function(err, data){
+        console.log(data.toString());
       });
     });
   }
