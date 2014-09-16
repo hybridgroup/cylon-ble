@@ -8,9 +8,9 @@ Cylon.robot({
 
   work: function(my) {
     my.generic.getDeviceName(function(err, data){
-      console.log(data.toString());
-      my.deviceInfo.getManufacturerName(function(e, d){
-        console.log(d.toString());
+      console.log(data);
+      my.deviceInfo.getManufacturerName(function(err, data){
+        console.log(data);
       });
     });
 
