@@ -2,9 +2,17 @@ var Cylon = require('cylon');
 
 Cylon.robot({
   connection: { name: 'bluetooth', adaptor: 'ble', uuid: '207377654321'},
-  device: {name: 'led', driver: 'ping'},
+  device: {name: 'generic', driver: 'generic', serviceId: '1800', characteristicId: '2a00'},
 
   work: function(my) {
-    after((10).second(), function() {console.log(my.bluetooth.peripherals());});
+    after((1).second(), function() {
+    	my.generic.getServiceCharacteristic(function(err, data){
+    		if (err) {
+    			console.log(err);
+    		} else {
+    			console.log(data.toString());
+    		}
+    	});
+    });
   }
 }).start();
