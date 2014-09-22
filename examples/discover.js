@@ -4,7 +4,8 @@ Cylon.robot({
   connection: { name: 'bluetooth', adaptor: 'ble', uuid: '207377654321'},
   devices: [{name: 'battery', driver: 'ble-battery-service'},
             {name: 'deviceInfo', driver: 'ble-device-information'},
-            {name: 'generic', driver: 'ble-generic-access'}],
+            {name: 'generic', driver: 'ble-generic-access'},
+            {name: 'wiced', driver: 'ble-wiced-sense'}],
 
   work: function(my) {
     my.generic.getDeviceName(function(err, data){
@@ -15,8 +16,9 @@ Cylon.robot({
     });
 
     every((3).seconds(), function() {
-      my.battery.getBatteryLevel(function(err, data){
-        console.log("Battery:", data);
+      my.wiced.getData(function(err, data){
+        console.log("Error:", err);
+        console.log("Data:", data);
       });
     });
   }
