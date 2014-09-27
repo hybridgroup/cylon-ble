@@ -8,6 +8,8 @@ This repository contains the Cylon adaptor/drivers to connect to Bluetooth Low E
 For more information about Cylon, check out the repo at
 https://github.com/hybridgroup/cylon
 
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-ble.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-ble)
+
 ## Getting Started
 
 Install the module with: `npm install cylon-ble`
