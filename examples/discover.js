@@ -12,13 +12,13 @@ Cylon.robot({
       console.log(data);
       my.deviceInfo.getManufacturerName(function(err, data){
         console.log(data);
-      });
-    });
-
-    every((3).seconds(), function() {
-      my.wiced.getData(function(err, data){
-        console.log("Error:", err);
-        console.log("Data:", data);
+        my.wiced.getData(function(err, data){
+          if (err) {
+            console.log("Error:", err);
+          } else {
+            console.log("Data:", data);
+          }
+        });
       });
     });
   }
