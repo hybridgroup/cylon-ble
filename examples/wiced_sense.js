@@ -18,10 +18,13 @@ Cylon.robot({
   work: function(my) {
     my.generic.getDeviceName(function(err, data){
       my.display(err, data);
-      my.deviceInfo.getManufacturerName(function(err, data){
+      my.generic.getAppearance(function(err, data){
         my.display(err, data);
-        my.wiced.getData(function(err, data){
+        my.deviceInfo.getManufacturerName(function(err, data){
           my.display(err, data);
+          my.wiced.getData(function(err, data){
+            my.display(err, data);
+          });
         });
       });
     });
