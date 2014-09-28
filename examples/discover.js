@@ -7,17 +7,21 @@ Cylon.robot({
             {name: 'generic', driver: 'ble-generic-access'},
             {name: 'wiced', driver: 'ble-wiced-sense'}],
 
+  display: function(err, data) {
+    if (err) {
+      console.log("Error:", err);
+    } else {
+      console.log("Data:", data);
+    }
+  },
+
   work: function(my) {
     my.generic.getDeviceName(function(err, data){
-      console.log(data);
+      my.display(err, data);
       my.deviceInfo.getManufacturerName(function(err, data){
-        console.log(data);
+        my.display(err, data);
         my.wiced.getData(function(err, data){
-          if (err) {
-            console.log("Error:", err);
-          } else {
-            console.log("Data:", data);
-          }
+          my.display(err, data);
         });
       });
     });
