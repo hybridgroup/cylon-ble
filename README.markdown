@@ -8,7 +8,7 @@ This repository contains the Cylon adaptor/drivers to connect to Bluetooth Low E
 For more information about Cylon, check out the repo at
 https://github.com/hybridgroup/cylon
 
-[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-ble.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-ble)
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-ble.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-ble) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-ble/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-ble) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-ble/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-ble)
 
 ## Getting Started
 
