@@ -1,9 +1,12 @@
-language: "node_js"
-node_js: '0.10'
-script: "make"
-
+language: node_js
+node_js:
+  - '0.10'
 install:
   - sudo apt-get install --force-yes libbluetooth-dev
   - npm install -g node-gyp
   - node-gyp install
   - npm install
+  - npm install -g istanbul codeclimate-test-reporter
+script:
+  - make cover
+  - CODECLIMATE_REPO_TOKEN=8731b2ab917e8ce80a37a54de5954732d2fd82bd2c4247125f9b7d5b2b93d62c codeclimate < coverage/lcov.info
