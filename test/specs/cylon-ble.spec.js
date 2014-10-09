@@ -15,7 +15,7 @@ describe("Cylon.BLE", function() {
   });
 
   describe("#driver", function() {
-    var opts = { device: {}, extraParams: {} };
+    var opts = { device: {connection: 'test'}, extraParams: {} };
 
     it("can instantiate a new BLEBatteryService", function() {
       opts.name = 'ble-battery-service';
