@@ -64,6 +64,81 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
     });
   });
 
+  describe("#getSystemId", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      driver._getServiceCharacteristic = stub().yields(null, 'value')
+    });
+
+    it("reads the service characteristic from the device", function() {
+      driver.getSystemId(callback);
+      expect(driver._getServiceCharacteristic).to.be.calledWith("2a23");
+      expect(callback).to.be.calledWith(null, 'value');
+    });
+  });
+
+  describe("#getHardwareRevision", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      driver._getServiceCharacteristic = stub().yields(null, 'value')
+    });
+
+    it("reads the service characteristic from the device", function() {
+      driver.getHardwareRevision(callback);
+      expect(driver._getServiceCharacteristic).to.be.calledWith("2a27");
+      expect(callback).to.be.calledWith(null, 'value');
+    });
+  });
+
+  describe("#getFirmwareRevision", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      driver._getServiceCharacteristic = stub().yields(null, 'value')
+    });
+
+    it("reads the service characteristic from the device", function() {
+      driver.getFirmwareRevision(callback);
+      expect(driver._getServiceCharacteristic).to.be.calledWith("2a26");
+      expect(callback).to.be.calledWith(null, 'value');
+    });
+  });
+
+  describe("#getManufacturerName", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      driver._getServiceCharacteristic = stub().yields(null, 'value')
+    });
+
+    it("reads the service characteristic from the device", function() {
+      driver.getManufacturerName(callback);
+      expect(driver._getServiceCharacteristic).to.be.calledWith("2a29");
+      expect(callback).to.be.calledWith(null, 'value');
+    });
+  });
+
+  describe("#getPnPId", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      driver._getServiceCharacteristic = stub().yields(null, 'value')
+    });
+
+    it("reads the service characteristic from the device", function() {
+      driver.getPnPId(callback);
+      expect(driver._getServiceCharacteristic).to.be.calledWith("2a50");
+      expect(callback).to.be.calledWith(null, 'value');
+    });
+  });
+
   describe("#_getServiceCharacteristic", function() {
     var callback;
 
