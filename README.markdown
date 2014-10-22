@@ -1,7 +1,6 @@
 # Cylon.js For Bluetooth LE
 
-Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics and
-physical computing using Node.js
+Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical computing, and the Internet of Things using Node.js
 
 This repository contains the Cylon adaptor/drivers to connect to Bluetooth Low Energy (LE) peripherals. It uses the Noble node module (https://github.com/sandeepmistry/noble) created by [@sandeepmistry](https://github.com/sandeepmistry) thank you!
 
@@ -38,8 +37,7 @@ Cylon.robot({
   }
 }).start();
 ```
-
-Explain how to connect from the computer to the device here...
+You will need a computer with a hardware adaptor that supports Bluetooth LE, also known as Bluetooth 4.0, or Bluetooth Smart. Also, this module currently only supports OSX and Linux operating systems.
 
 ## Contributing
 
