@@ -55,7 +55,7 @@ You will need a computer with a hardware adaptor that supports Bluetooth LE, als
 
 ## Release History
 
-None yet...
+Version 0.1.0 - Initial release
 
 ## License
 
