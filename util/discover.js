@@ -16,4 +16,5 @@ noble.on('discover', function(peripheral) {
   console.log("Peripheral discovered!")
   console.log("  Name: " + peripheral.advertisement.localName)
   console.log("  UUID: " + peripheral.uuid);
+  console.log("  rssi: " + peripheral.rssi);
 });
