@@ -1,8 +1,8 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'bluetooth', adaptor: 'ble', uuid: '207377654321'},
-  device: {name: 'deviceInfo', driver: 'ble-device-information'},
+  connection: { name: 'bluetooth', adaptor: 'central', uuid: '207377654321', module: 'ble' },
+  device: { name: 'deviceInfo', driver: 'ble-device-information' },
 
   display: function(err, data) {
     if (err) {
