@@ -10,7 +10,7 @@ describe("Central", function() {
 
   beforeEach(function() {
     adaptor = new Central({
-      extraParams: { uuid: 'uuid' },
+      uuid: 'uuid',
       connection: { emit: spy() }
     });
   });

@@ -24,11 +24,11 @@ describe("Cylon.BLE", function() {
   });
 
   describe("#driver", function() {
-    var opts = { device: { connection: 'test' }, extraParams: {} };
+    var opts = { device: { connection: 'test' } };
 
     for (var driver in Drivers) {
       var driverClass = Drivers[driver];
-      opts.name = driver;
+      opts.driver = driver;
 
       it("instantiates the " + driver + " driver", function() {
         expect(module.driver(opts)).to.be.an.instanceOf(driverClass);

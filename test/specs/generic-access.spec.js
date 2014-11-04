@@ -22,7 +22,7 @@ describe("Cylon.Drivers. BLE.BLEGenericAccess", function() {
     it("sets @serviceId to the passed serviceId", function() {
       driver = new BLEGenericAccess({
         device: { connection: {} },
-        extraParams: { serviceId: 'serviceId' }
+        serviceId: 'serviceId'
       });
 
       expect(driver.serviceId).to.be.eql('serviceId');
