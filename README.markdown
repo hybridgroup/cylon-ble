@@ -55,6 +55,8 @@ You will need a computer with a hardware adaptor that supports Bluetooth LE, als
 
 ## Release History
 
+Version 0.2.0 - Updates for compatability with Cylon 0.20.0
+
 Version 0.1.0 - Initial release
 
 ## License
