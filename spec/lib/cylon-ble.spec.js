@@ -24,7 +24,7 @@ describe("Cylon.BLE", function() {
   });
 
   describe("#driver", function() {
-    var opts = { device: { connection: 'test' } };
+    var opts = {};
 
     for (var driver in Drivers) {
       var driverClass = Drivers[driver];
