@@ -9,7 +9,7 @@ describe("Cylon.Drivers. BLE.BLEGenericAccess", function() {
 
   beforeEach(function() {
     driver = new BLEGenericAccess({
-      adaptor: {}
+      connection: {}
     });
   });
 
@@ -21,7 +21,7 @@ describe("Cylon.Drivers. BLE.BLEGenericAccess", function() {
   describe("#constructor", function() {
     it("sets @serviceId to the passed serviceId", function() {
       driver = new BLEGenericAccess({
-        adaptor: {},
+        connection: {},
         serviceId: 'serviceId'
       });
 
@@ -150,12 +150,12 @@ describe("Cylon.Drivers. BLE.BLEGenericAccess", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver.adaptor.readServiceCharacteristic = spy();
+      driver.connection.readServiceCharacteristic = spy();
     });
 
-    it("calls #readServiceCharacteristic on the adaptor", function() {
+    it("calls #readServiceCharacteristic on the connection", function() {
       driver._getServiceCharacteristic("hello", callback);
-      expect(driver.adaptor.readServiceCharacteristic).to.be.calledWith(
+      expect(driver.connection.readServiceCharacteristic).to.be.calledWith(
         "1800",
         "hello",
         callback
