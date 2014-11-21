@@ -13,7 +13,7 @@ var Drivers = {
 describe("Cylon.BLE", function() {
   describe("#adaptors", function() {
     it('is an array of supplied adaptors', function() {
-      expect(module.adaptors).to.be.eql(['central']);
+      expect(module.adaptors).to.be.eql(['ble', 'central']);
     });
   });
 
