@@ -15,6 +15,10 @@
 
   "license": "Apache 2.0",
 
+  "bin": {
+    "cylon-ble-scan": "bin/blescan.js"
+  },
+
   "devDependencies": {
     "sinon-chai": "2.5.0",
     "chai": "1.9.1",

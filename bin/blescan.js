@@ -1,4 +1,4 @@
-"use strict";
+#!/usr/bin/env node
 
 var noble = require('noble');
 
