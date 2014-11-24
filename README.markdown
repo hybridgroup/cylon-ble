@@ -43,7 +43,7 @@ You will need a computer with a hardware adaptor that supports Bluetooth LE, als
 
 You can use the `cylon-ble` modules's included commands to scan for BLE devices, and then to list the various BLE characteristics for a specific device.
 
-Note that use need to install cylon-ble using the `-g` option, and then run each commands under `sudo` like this:
+Note that you need to install cylon-ble using the `-g` option, and then run each commands under `sudo` like this:
 
 ```
 $ sudo cylon-ble-scan
