@@ -39,6 +39,37 @@ Cylon.robot({
 ```
 You will need a computer with a hardware adaptor that supports Bluetooth LE, also known as Bluetooth 4.0, or Bluetooth Smart. Also, this module currently only supports OSX and Linux operating systems.
 
+## Commands
+
+You can use the `cylon-ble` modules's included commands to scan for BLE devices, and then to list the various BLE characteristics for a specific device.
+
+Note that you need to install cylon-ble using the `-g` option, and then run each commands under `sudo` like this:
+
+```
+$ sudo cylon-ble-scan
+Starting scan.
+Peripheral discovered!
+  Name: 2B-785E
+  UUID: cc360e85785e
+  rssi: -80
+```
+
+```
+$ sudo cylon-ble-info cc360e85785e
+peripheral with UUID cc360e85785e found
+  Local Name        = 2B-785E
+  TX Power Level    = -10
+  Service Data      = 
+  Service UUIDs     = 22bb746f2ba075542d6f726568705327
+
+services and characteristics:
+1800 (Generic Access)
+  2a00 (Device Name)
+    properties  read, write
+    value       32422d37383545 | '2B-785E'
+...
+```
+
 ## Contributing
 
 * All patches must be provided under the Apache 2.0 License

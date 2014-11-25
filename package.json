@@ -15,6 +15,11 @@
 
   "license": "Apache 2.0",
 
+  "bin": {
+    "cylon-ble-scan": "bin/blescan.js",
+    "cylon-ble-info": "bin/bleinfo.js"
+  },
+
   "devDependencies": {
     "sinon-chai": "2.5.0",
     "chai": "1.9.1",
@@ -29,6 +34,7 @@
 
   "dependencies": {
     "cylon": "~0.20.1",
-    "noble": "~0.3.4"
+    "noble": "~0.3.4",
+    "async": "0.9.0"
   }
 }

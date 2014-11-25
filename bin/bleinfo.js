@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var async = require('async');
 var noble = require('noble');
 
