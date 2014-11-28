@@ -1,6 +1,6 @@
 {
   "name": "cylon-ble",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "lib/cylon-ble.js",
   "description": "Cylon module for Bluetooth Low Energy (LE) peripherals",
   "homepage": "http://cylonjs.com",
@@ -29,11 +29,11 @@
   },
 
   "peerDependencies": {
-    "cylon": ">=0.20.1 < 1"
+    "cylon": ">= 0.21.0 < 1"
   },
 
   "dependencies": {
-    "cylon": "~0.20.1",
+    "cylon": "~0.21.0",
     "noble": "~0.3.4",
     "async": "0.9.0"
   }
