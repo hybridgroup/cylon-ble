@@ -21,8 +21,13 @@ Install the module with: `npm install cylon-ble`
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'wiced', adaptor: 'ble', uuid: '207377654321'},
-  device: {name: 'battery', driver: 'ble-battery-service'},
+  connections: {
+    wiced: { adaptor: 'ble', uuid: '207377654321' }
+  },
+
+  devices: {
+    battery: { driver: 'ble-battery-service' }
+  },
 
   work: function(my) {
     every((1).second(), function() {
