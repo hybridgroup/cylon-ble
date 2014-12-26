@@ -9,13 +9,44 @@ https://github.com/hybridgroup/cylon
 
 [![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-ble.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-ble) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-ble/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-ble) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-ble/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-ble)
 
-## Getting Started
+## How to Install
 
-Install the module with: `npm install cylon-ble`
+Install the module with:
 
-## Examples
+    $ npm install cylon-ble
 
-## Connecting
+## How to Use
+
+Here's a basic BLE example to get the battery level of a device:
+
+```javascript
+"use strict";
+
+var Cylon = require('cylon');
+
+Cylon.robot({
+  connections: {
+    bluetooth: { adaptor: 'ble', uuid: '207377654321' }
+  },
+
+  devices: {
+    battery: { driver: 'ble-battery-service' }
+  },
+
+  work: function(my) {
+    my.battery.getBatteryLevel(function(err, data) {
+      if (!!err) {
+        console.log("Error: ", err);
+        return;
+      }
+
+      console.log("Data: ", data);
+    });
+  }
+}).start();
+```
+
+## How to Connect
 
 ```javascript
 var Cylon = require('cylon');
@@ -42,6 +73,7 @@ Cylon.robot({
   }
 }).start();
 ```
+
 You will need a computer with a hardware adaptor that supports Bluetooth LE, also known as Bluetooth 4.0, or Bluetooth Smart. Also, this module currently only supports OSX and Linux operating systems.
 
 ## Commands
@@ -50,30 +82,33 @@ You can use the `cylon-ble` modules's included commands to scan for BLE devices,
 
 Note that you need to install cylon-ble using the `-g` option, and then run each commands under `sudo` like this:
 
-```
-$ sudo cylon-ble-scan
-Starting scan.
-Peripheral discovered!
-  Name: 2B-785E
-  UUID: cc360e85785e
-  rssi: -80
-```
+    $ sudo cylon-ble-scan
+    Starting scan.
+    Peripheral discovered!
+      Name: 2B-785E
+      UUID: cc360e85785e
+      rssi: -80
 
-```
-$ sudo cylon-ble-info cc360e85785e
-peripheral with UUID cc360e85785e found
-  Local Name        = 2B-785E
-  TX Power Level    = -10
-  Service Data      = 
-  Service UUIDs     = 22bb746f2ba075542d6f726568705327
+    $ sudo cylon-ble-info cc360e85785e
+    peripheral with UUID cc360e85785e found
+      Local Name        = 2B-785E
+      TX Power Level    = -10
+      Service Data      =
+      Service UUIDs     = 22bb746f2ba075542d6f726568705327
 
-services and characteristics:
-1800 (Generic Access)
-  2a00 (Device Name)
-    properties  read, write
-    value       32422d37383545 | '2B-785E'
-...
-```
+    services and characteristics:
+    1800 (Generic Access)
+      2a00 (Device Name)
+        properties  read, write
+        value       32422d37383545 | '2B-785E'
+    ...
+
+
+## Documentation
+
+We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
+
+Thank you!
 
 ## Contributing
 
