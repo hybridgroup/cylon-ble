@@ -1,23 +1,26 @@
 BIN := ./node_modules/.bin
+FILES := $(shell find lib spec/lib examples  -type f -name "*.js")
 TEST_FILES := spec/helper.js $(shell find spec/lib -type f -name "*.js")
 
 VERSION := $(shell node -e "console.log(require('./package.json').version)")
 
-.PHONY: cover test bdd lint release
+.PHONY: cover test bdd lint ci release
 
-test:
-	@$(BIN)/mocha --colors $(TEST_FILES)
+test: lint
+	@$(BIN)/mocha --colors -R dot $(TEST_FILES)
 
-bdd:
+bdd: lint
 	@$(BIN)/mocha --colors -R spec $(TEST_FILES)
 
 cover:
 	@istanbul cover $(BIN)/_mocha $(TEST_FILES) --report lcovonly -- -R spec
 
 lint:
-	@jshint ./lib
+	@jshint $(FILES)
 
-release:
+ci: lint cover
+
+release: lint test
 	@git push origin master
 	@git checkout release ; git merge master ; git push ; git checkout master
 	@git tag -m "$(VERSION)" v$(VERSION)

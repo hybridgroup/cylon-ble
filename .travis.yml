@@ -9,5 +9,5 @@ install:
   - npm install git://github.com/hybridgroup/cylon.git
   - npm install -g istanbul codeclimate-test-reporter
 script:
-  - make cover
+  - make ci
   - CODECLIMATE_REPO_TOKEN=8731b2ab917e8ce80a37a54de5954732d2fd82bd2c4247125f9b7d5b2b93d62c codeclimate < coverage/lcov.info
