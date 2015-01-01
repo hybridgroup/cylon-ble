@@ -1,6 +1,7 @@
-'use strict';
+/* jshint expr:true */
+"use strict";
 
-var Cylon = require('cylon');
+var Cylon = require("cylon");
 
 var BLEBatteryService = source("battery-service");
 
@@ -22,14 +23,14 @@ describe("Cylon.Drivers.BLE.BLEBatteryService", function() {
     it("sets @serviceId to the passed serviceId", function() {
       driver = new BLEBatteryService({
         connection: {},
-        serviceId: 'serviceId'
+        serviceId: "serviceId"
       });
 
-      expect(driver.serviceId).to.be.eql('serviceId');
+      expect(driver.serviceId).to.be.eql("serviceId");
     });
 
     it("sets @serviceId to the '180f' by default", function() {
-      expect(driver.serviceId).to.be.eql('180f');
+      expect(driver.serviceId).to.be.eql("180f");
     });
   });
 
@@ -54,7 +55,7 @@ describe("Cylon.Drivers.BLE.BLEBatteryService", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, new Buffer('1'))
+      driver._getServiceCharacteristic = stub().yields(null, new Buffer("1"));
     });
 
     it("reads the service characteristic from the device", function() {

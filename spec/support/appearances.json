@@ -1,0 +1,202 @@
+{
+  "0": {
+    "description": "None",
+    "value": "Unknown"
+  },
+  "1024": {
+    "description": "Generic category",
+    "value": "Generic Glucose Meter"
+  },
+  "1088": {
+    "description": "Generic category",
+    "value": "Generic: Running Walking Sensor"
+  },
+  "1089": {
+    "description": "Running Walking Sensor subtype",
+    "value": "Running Walking Sensor: In-Shoe"
+  },
+  "1090": {
+    "description": "Running Walking Sensor subtype",
+    "value": "Running Walking Sensor: On-Shoe"
+  },
+  "1091": {
+    "description": "Running Walking Sensor subtype",
+    "value": "Running Walking Sensor: On-Hip"
+  },
+  "1152": {
+    "description": "Generic category",
+    "value": "Generic: Cycling"
+  },
+  "1153": {
+    "description": "Cycling subtype",
+    "value": "Cycling: Cycling Computer"
+  },
+  "1154": {
+    "description": "Cycling subtype",
+    "value": "Cycling: Speed Sensor"
+  },
+  "1155": {
+    "description": "Cycling subtype",
+    "value": "Cycling: Cadence Sensor"
+  },
+  "1156": {
+    "description": "Cycling subtype",
+    "value": "Cycling: Power Sensor"
+  },
+  "1157": {
+    "description": "Cycling subtype",
+    "value": "Cycling: Speed and Cadence Sensor"
+  },
+  "128": {
+    "description": "Generic category",
+    "value": "Generic Computer"
+  },
+  "192": {
+    "description": "Generic category",
+    "value": "Generic Watch"
+  },
+  "193": {
+    "description": "Watch subtype",
+    "value": "Watch: Sports Watch"
+  },
+  "256": {
+    "description": "Generic category",
+    "value": "Generic Clock "
+  },
+  "3136": {
+    "description": "Pulse Oximeter Generic Category",
+    "value": "Generic: Pulse Oximeter"
+  },
+  "3137": {
+    "description": "Pulse Oximeter subtype",
+    "value": "Fingertip Pulse"
+  },
+  "3138": {
+    "description": "Pulse Oximeter subtype",
+    "value": "Wrist Worn"
+  },
+  "320": {
+    "description": "Generic category",
+    "value": "Generic Display"
+  },
+  "3200": {
+    "description": "Weight Scale Generic Category",
+    "value": "Generic: Weight Scale"
+  },
+  "384": {
+    "description": "Generic category",
+    "value": "Generic Remote Control"
+  },
+  "448": {
+    "description": "Generic category",
+    "value": "Generic Eye-glasses"
+  },
+  "512": {
+    "description": "Generic category",
+    "value": "Generic Tag"
+  },
+  "5184": {
+    "description": "Outdoor Sports Activity Generic Category",
+    "value": "Generic: Outdoor Sports Activity"
+  },
+  "5185": {
+    "description": "Outdoor Sports Activity subtype",
+    "value": "Location Display Device"
+  },
+  "5186": {
+    "description": "Outdoor Sports Activity subtype",
+    "value": "Location and Navigation Display Device"
+  },
+  "5187": {
+    "description": "Outdoor Sports Activity subtype",
+    "value": "Location Pod"
+  },
+  "5188": {
+    "description": "Outdoor Sports Activity subtype",
+    "value": "Location and Navigation Pod"
+  },
+  "576": {
+    "description": "Generic category",
+    "value": "Generic Keyring"
+  },
+  "64": {
+    "description": "Generic category",
+    "value": "Generic Phone"
+  },
+  "640": {
+    "description": "Generic category",
+    "value": "Generic Media Player"
+  },
+  "704": {
+    "description": "Generic category",
+    "value": "Generic Barcode Scanner"
+  },
+  "768": {
+    "description": "Generic category",
+    "value": "Generic Thermometer"
+  },
+  "769": {
+    "description": "Thermometer subtype",
+    "value": "Thermometer: Ear"
+  },
+  "832": {
+    "description": "Generic category",
+    "value": "Generic Heart rate Sensor"
+  },
+  "833": {
+    "description": "Heart Rate Sensor subtype",
+    "value": "Heart Rate Sensor: Heart Rate Belt"
+  },
+  "896": {
+    "description": "Generic category",
+    "value": "Generic Blood Pressure"
+  },
+  "897": {
+    "description": "Pressure subtype",
+    "value": "Blood Pressure: Arm Blood"
+  },
+  "898": {
+    "description": "Pressure subtype",
+    "value": "Blood Pressure: Wrist Blood"
+  },
+  "960": {
+    "description": "HID Generic",
+    "value": "Human Interface Device (HID)"
+  },
+  "961": {
+    "description": "HID subtype",
+    "value": "Keyboard"
+  },
+  "962": {
+    "description": "HID subtype",
+    "value": "Mouse"
+  },
+  "963": {
+    "description": "HID subtype",
+    "value": "Joystick"
+  },
+  "964": {
+    "description": "HID subtype",
+    "value": "Gamepad"
+  },
+  "965": {
+    "description": "HID subtype",
+    "value": "Digitizer Tablet"
+  },
+  "966": {
+    "description": "HID subtype",
+    "value": "Card Reader"
+  },
+  "967": {
+    "description": "HID subtype",
+    "value": "Digital Pen"
+  },
+  "968": {
+    "description": "HID subtype",
+    "value": "Barcode Scanner"
+  },
+  "default": {
+    "description": "Unknown",
+    "value": "Unknown value"
+  }
+}

@@ -1,8 +1,9 @@
-'use strict';
+/* jshint expr:true */
+"use strict";
 
 var BLEDeviceInformation = source("device-information");
 
-var Cylon = require('cylon');
+var Cylon = require("cylon");
 
 describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
   var driver;
@@ -10,7 +11,7 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
   beforeEach(function() {
     driver = new BLEDeviceInformation({
       connection: {}
-    })
+    });
   });
 
   it("is a subclass of Cylon.Driver", function() {
@@ -22,14 +23,14 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
     it("sets @serviceId to the passed serviceId", function() {
       driver = new BLEDeviceInformation({
         connection: {},
-        serviceId: 'serviceId'
+        serviceId: "serviceId"
       });
 
-      expect(driver.serviceId).to.be.eql('serviceId');
+      expect(driver.serviceId).to.be.eql("serviceId");
     });
 
     it("sets @serviceId to the '180f' by default", function() {
-      expect(driver.serviceId).to.be.eql('180a');
+      expect(driver.serviceId).to.be.eql("180a");
     });
   });
 
@@ -54,13 +55,13 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, 'value')
+      driver._getServiceCharacteristic = stub().yields(null, "value");
     });
 
     it("reads the service characteristic from the device", function() {
       driver.getModelNumber(callback);
       expect(driver._getServiceCharacteristic).to.be.calledWith("2a24");
-      expect(callback).to.be.calledWith(null, 'value');
+      expect(callback).to.be.calledWith(null, "value");
     });
   });
 
@@ -69,13 +70,13 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, 'value')
+      driver._getServiceCharacteristic = stub().yields(null, "value");
     });
 
     it("reads the service characteristic from the device", function() {
       driver.getSystemId(callback);
       expect(driver._getServiceCharacteristic).to.be.calledWith("2a23");
-      expect(callback).to.be.calledWith(null, 'value');
+      expect(callback).to.be.calledWith(null, "value");
     });
   });
 
@@ -84,13 +85,13 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, 'value')
+      driver._getServiceCharacteristic = stub().yields(null, "value");
     });
 
     it("reads the service characteristic from the device", function() {
       driver.getHardwareRevision(callback);
       expect(driver._getServiceCharacteristic).to.be.calledWith("2a27");
-      expect(callback).to.be.calledWith(null, 'value');
+      expect(callback).to.be.calledWith(null, "value");
     });
   });
 
@@ -99,13 +100,13 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, 'value')
+      driver._getServiceCharacteristic = stub().yields(null, "value");
     });
 
     it("reads the service characteristic from the device", function() {
       driver.getFirmwareRevision(callback);
       expect(driver._getServiceCharacteristic).to.be.calledWith("2a26");
-      expect(callback).to.be.calledWith(null, 'value');
+      expect(callback).to.be.calledWith(null, "value");
     });
   });
 
@@ -114,13 +115,13 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, 'value')
+      driver._getServiceCharacteristic = stub().yields(null, "value");
     });
 
     it("reads the service characteristic from the device", function() {
       driver.getManufacturerName(callback);
       expect(driver._getServiceCharacteristic).to.be.calledWith("2a29");
-      expect(callback).to.be.calledWith(null, 'value');
+      expect(callback).to.be.calledWith(null, "value");
     });
   });
 
@@ -129,13 +130,13 @@ describe("Cylon.Drivers.BLE.BLEDeviceInformation", function() {
 
     beforeEach(function() {
       callback = spy();
-      driver._getServiceCharacteristic = stub().yields(null, 'value')
+      driver._getServiceCharacteristic = stub().yields(null, "value");
     });
 
     it("reads the service characteristic from the device", function() {
       driver.getPnPId(callback);
       expect(driver._getServiceCharacteristic).to.be.calledWith("2a50");
-      expect(callback).to.be.calledWith(null, 'value');
+      expect(callback).to.be.calledWith(null, "value");
     });
   });
 

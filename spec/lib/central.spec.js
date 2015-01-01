@@ -1,16 +1,17 @@
-'use strict';
+/* jshint expr:true */
+"use strict";
 
-var Cylon = require('cylon');
+var Cylon = require("cylon");
 
 var Central = source("central"),
-    Noble = source('noble');
+    Noble = source("noble");
 
 describe("Central", function() {
   var adaptor;
 
   beforeEach(function() {
     adaptor = new Central({
-      uuid: 'uuid',
+      uuid: "uuid",
     });
   });
 
@@ -20,19 +21,19 @@ describe("Central", function() {
   });
 
   describe("#constructor", function() {
-    it('sets @bleConnect to Noble', function() {
+    it("sets @bleConnect to Noble", function() {
       expect(adaptor.bleConnect).to.be.eql(Noble);
     });
 
-    it('sets @isConnected to false', function() {
+    it("sets @isConnected to false", function() {
       expect(adaptor.isConnected).to.be.eql(false);
     });
 
-    it('sets @uuid to the provided UUID', function() {
-      expect(adaptor.uuid).to.be.eql('uuid');
+    it("sets @uuid to the provided UUID", function() {
+      expect(adaptor.uuid).to.be.eql("uuid");
     });
 
-    it('sets @connectedPeripherals to an empty object by default', function() {
+    it("sets @connectedPeripherals to an empty object by default", function() {
       expect(adaptor.connectedPeripherals).to.be.eql({});
     });
   });
@@ -43,7 +44,7 @@ describe("Central", function() {
     beforeEach(function() {
       callback = spy();
 
-      peripheral = { uuid: 'uuid' };
+      peripheral = { uuid: "uuid" };
 
       bleConnect = adaptor.bleConnect = {
         on: stub(),
@@ -61,7 +62,7 @@ describe("Central", function() {
     context("when a peripheral is discovered", function() {
       context("if it's not the requested peripheral", function() {
         beforeEach(function() {
-          peripheral.uuid = 'nope';
+          peripheral.uuid = "nope";
           bleConnect.on.yield(peripheral);
         });
 
@@ -142,7 +143,7 @@ describe("Central", function() {
     beforeEach(function() {
       adaptor.connectedPeripherals = {
         uuid: { "connected": false, "peripheral": { "uuid": "uuid" } }
-      }
+      };
     });
 
     it("returns the connectedPeripherals", function() {
@@ -157,12 +158,21 @@ describe("Central", function() {
       characteristic = { read: stub().yields(null, "char data") };
       callback = spy();
 
-      adaptor.getCharacteristic = stub().yields(null, characteristic)
+      adaptor.getCharacteristic = stub().yields(null, characteristic);
     });
 
     it("fetches the characteristic, and reads data from it", function() {
-      adaptor.readServiceCharacteristic("serviceId", "characteristicId", callback);
-      expect(adaptor.getCharacteristic).to.be.calledWith('serviceId', 'characteristicId');
+      adaptor.readServiceCharacteristic(
+        "serviceId",
+        "characteristicId",
+        callback
+      );
+
+      expect(adaptor.getCharacteristic).to.be.calledWith(
+        "serviceId",
+        "characteristicId"
+      );
+
       expect(characteristic.read).to.be.called;
       expect(callback).to.be.calledWith(null, "char data");
     });
@@ -175,12 +185,22 @@ describe("Central", function() {
       characteristic = { write: stub().yields(null) };
       callback = spy();
 
-      adaptor.getCharacteristic = stub().yields(null, characteristic)
+      adaptor.getCharacteristic = stub().yields(null, characteristic);
     });
 
     it("fetches the characteristic, and writes data to it", function() {
-      adaptor.writeServiceCharacteristic("serviceId", "characteristicId", "value", callback);
-      expect(adaptor.getCharacteristic).to.be.calledWith('serviceId', 'characteristicId');
+      adaptor.writeServiceCharacteristic(
+        "serviceId",
+        "characteristicId",
+        "value",
+        callback
+      );
+
+      expect(adaptor.getCharacteristic).to.be.calledWith(
+        "serviceId",
+        "characteristicId"
+      );
+
       expect(characteristic.write).to.be.calledWith("value");
       expect(callback).to.be.calledWith(null, null);
     });
@@ -190,20 +210,32 @@ describe("Central", function() {
     var callback, characteristic;
 
     beforeEach(function() {
-      characteristic = { notify: stub().yields(null), on: stub().yields('data', 'isNotification') };
+      characteristic = {
+        notify: stub().yields(null),
+        on: stub().yields("data", "isNotification")
+      };
+
       callback = spy();
 
-      adaptor.getCharacteristic = stub().yields(null, characteristic)
+      adaptor.getCharacteristic = stub().yields(null, characteristic);
     });
 
     it("fetches the characteristic, and notifys it", function() {
-      adaptor.notifyServiceCharacteristic("serviceId", "characteristicId", "state", callback);
+      adaptor.notifyServiceCharacteristic(
+        "serviceId",
+        "characteristicId",
+        "state", callback
+      );
 
-      expect(adaptor.getCharacteristic).to.be.calledWith('serviceId', 'characteristicId');
+      expect(adaptor.getCharacteristic).to.be.calledWith(
+        "serviceId",
+        "characteristicId"
+      );
+
       expect(characteristic.notify).to.be.calledWith("state");
       expect(characteristic.on).to.be.calledWith("read");
 
-      expect(callback).to.be.calledWith(null, 'data');
+      expect(callback).to.be.calledWith(null, "data");
     });
   });
 
@@ -212,18 +244,18 @@ describe("Central", function() {
 
     beforeEach(function() {
       callback = spy();
-      adaptor.connectedPeripherals.uuid = {}
+      adaptor.connectedPeripherals.uuid = {};
 
       characteristic = {};
 
       service = {
         discoverCharacteristics: stub().yields(null, [characteristic])
-      }
+      };
 
       peripheral = adaptor.connectedPeripherals.uuid.peripheral = {
         connect: stub().yields(),
         discoverServices: stub().yields(null, [service])
-      }
+      };
     });
 
     context("if #isConnected is false", function() {
@@ -248,11 +280,13 @@ describe("Central", function() {
       });
 
       it("discovers serivces through the peripheral", function() {
-        expect(peripheral.discoverServices).to.be.calledWith(['serviceId']);
+        expect(peripheral.discoverServices).to.be.calledWith(["serviceId"]);
       });
 
       it("discovers the service's characteristics", function() {
-        expect(service.discoverCharacteristics).to.be.calledWith(['characteristicId']);
+        expect(service.discoverCharacteristics).to.be.calledWith(
+          ["characteristicId"]
+        );
       });
 
       it("triggers the callback with the characteristic", function() {
