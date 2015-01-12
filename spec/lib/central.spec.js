@@ -202,7 +202,7 @@ describe("Central", function() {
       );
 
       expect(characteristic.write).to.be.calledWith("value");
-      expect(callback).to.be.calledWith(null, null);
+      expect(callback).to.be.calledWith(null);
     });
   });
 
