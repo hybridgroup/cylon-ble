@@ -34,7 +34,7 @@
 
   "dependencies": {
     "cylon": "~0.21.0",
-    "noble": "git://github.com/hybridgroup/noble.git",
+    "noble": "~0.3.0",
     "async": "0.9.0"
   }
 }
