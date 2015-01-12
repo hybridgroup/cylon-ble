@@ -126,6 +126,8 @@ Thank you!
 
 ## Release History
 
+Version 0.3.1 - No longer use writeWithoutResponse for all characteristic write operations.
+
 Version 0.3.0 - Updates for compatability with Cylon 0.21.0
 
 Version 0.2.0 - Updates for compatability with Cylon 0.20.0
