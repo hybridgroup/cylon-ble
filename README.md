@@ -13,7 +13,7 @@ https://github.com/hybridgroup/cylon
 
 Install the module with:
 
-    $ npm install cylon-ble
+    $ npm install cylon cylon-ble
 
 ## How to Use
 
