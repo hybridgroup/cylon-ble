@@ -28,10 +28,6 @@
     "jshint": "2.5.0"
   },
 
-  "peerDependencies": {
-    "cylon": ">= 0.22.0 < 1"
-  },
-
   "dependencies": {
     "cylon": "~0.22.0",
     "noble": "~0.3.0",
