@@ -15,6 +15,10 @@ Install the module with:
 
     $ npm install cylon cylon-ble
 
+For Ubuntu you must install the following dependency prior to `npm install cylon-ble`:
+
+    $ sudo apt-get install libbluetooth-dev
+
 ## How to Use
 
 Here's a basic BLE example to get the battery level of a device:
