@@ -13,7 +13,21 @@
     "url": "https://github.com/hybridgroup/cylon-ble"
   },
 
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
+
+  "keywords": [
+    "cylon",
+    "cylonjs",
+    "cylons",
+    "robot",
+    "robots",
+    "robotics",
+    "iot",
+    "hardware",
+    "Bluetooth",
+    "BLE",
+    "Bluetooth LE"
+  ],
 
   "bin": {
     "cylon-ble-scan": "bin/blescan.js",
