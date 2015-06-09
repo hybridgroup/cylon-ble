@@ -38,64 +38,74 @@ describe("Central", function() {
   });
 
   describe("#connect", function() {
-    var peripheral, bleConnect, callback;
+    var ble, emit, callback;
 
     beforeEach(function() {
-      callback = spy();
-
-      peripheral = { uuid: "uuid" };
-
-      bleConnect = adaptor.bleConnect = {
+      ble = adaptor.bleConnect = {
         on: stub(),
-        startScanning: spy(),
-        stopScanning: spy()
+        startScanning: stub(),
+        stopScanning: stub(),
       };
+
+      emit = adaptor.emit = stub();
+
+      callback = spy();
 
       adaptor.connect(callback);
     });
 
-    it("starts scanning for peripherals when powered on", function() {
-      bleConnect.on.yield("poweredOn");
-      expect(bleConnect.startScanning).to.be.called;
+    it("registers a stateChange listener to start scanning", function() {
+      expect(ble.on).to.be.calledWith("stateChange");
     });
 
-    context("when a peripheral is discovered", function() {
-      context("if it's not the requested peripheral", function() {
-        beforeEach(function() {
-          peripheral.uuid = "nope";
-          bleConnect.on.yield(peripheral);
-        });
+    it("proxies the 'discover' event", function() {
+      expect(ble.on).to.be.calledWith("discover");
+      ble.on.withArgs("discover").yield("new device");
+      expect(emit).to.be.calledWith("discover", "new device");
+    });
 
-        it("keeps scanning", function() {
-          expect(bleConnect.stopScanning).to.not.be.called;
-        });
-
-        it("doesn't trigger the callback", function() {
-          expect(callback).to.not.be.called;
-        });
+    context("if a UUID was provided", function() {
+      it("does not allow duplicates when scanning", function() {
+        ble.on.withArgs("stateChange").yield("poweredOn");
+        expect(ble.startScanning).to.be.calledWith([], false);
       });
 
-      context("if it is the requested peripheral", function() {
-        beforeEach(function() {
-          bleConnect.on.yield(peripheral);
-        });
+      it("will connect to the specified peripheral", function() {
+        var peripheral = { uuid: "uuid" };
 
-        it("stops scanning", function() {
-          expect(bleConnect.stopScanning).to.be.called;
-        });
+        expect(callback).to.not.be.called;
 
-        it("sets #isConnected to true", function() {
-          expect(adaptor.isConnected).to.be.true;
-        });
+        ble.on.withArgs("discover").yield(peripheral);
 
         it("adds the peripheral to #connectedPeripherals", function() {
           var p = { connected: false, peripheral: { uuid: "uuid" } };
           expect(adaptor.connectedPeripherals.uuid).to.be.eql(p);
+          expect(ble.stopScanning).to.be.called;
         });
 
-        it("triggers the callback", function() {
-          expect(callback).to.be.called;
-        });
+        expect(callback).to.be.called;
+      });
+    });
+
+    context("if no UUID was provided", function() {
+      beforeEach(function() {
+        adaptor.uuid = null;
+        adaptor.connect(callback);
+      });
+
+      it("allows duplicates when scanning", function() {
+        ble.on.withArgs("stateChange").yield("poweredOn");
+        expect(ble.startScanning).to.be.calledWith([], true);
+      });
+
+      it("triggers the callback immediately", function() {
+        expect(callback).to.be.called;
+      });
+
+      it("doesn't try to connect to a peripheral", function() {
+        ble.on.withArgs("discover").yield({ uuid: "uuid" });
+        expect(ble.stopScanning).to.not.be.called;
+        expect(adaptor.connectedPeripherals).to.be.eql({});
       });
     });
   });
