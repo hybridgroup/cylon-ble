@@ -13,7 +13,7 @@ Cylon.robot({
 
   work: function(my) {
     my.deviceInfo.getManufacturerName(function(err, data) {
-      if (!!err) {
+      if (err) {
         console.log("error: ", err);
         return;
       }

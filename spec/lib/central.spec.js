@@ -1,10 +1,9 @@
-/* jshint expr:true */
 "use strict";
 
 var Cylon = require("cylon");
 
-var Central = source("central"),
-    Noble = source("noble");
+var Central = lib("central"),
+    Noble = lib("noble");
 
 describe("Central", function() {
   var adaptor;
@@ -89,7 +88,7 @@ describe("Central", function() {
         });
 
         it("adds the peripheral to #connectedPeripherals", function() {
-          var p = { "connected": false, "peripheral": { "uuid": "uuid" } };
+          var p = { connected: false, peripheral: { uuid: "uuid" } };
           expect(adaptor.connectedPeripherals.uuid).to.be.eql(p);
         });
 
@@ -142,7 +141,7 @@ describe("Central", function() {
   describe("#peripherals", function() {
     beforeEach(function() {
       adaptor.connectedPeripherals = {
-        uuid: { "connected": false, "peripheral": { "uuid": "uuid" } }
+        uuid: { connected: false, peripheral: { uuid: "uuid" } }
       };
     });
 

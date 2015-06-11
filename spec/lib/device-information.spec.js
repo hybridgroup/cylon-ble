@@ -1,7 +1,6 @@
-/* jshint expr:true */
 "use strict";
 
-var BLEDeviceInformation = source("device-information");
+var BLEDeviceInformation = lib("device-information");
 
 var Cylon = require("cylon");
 

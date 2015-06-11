@@ -1,7 +1,6 @@
-/* jshint expr:true */
 "use strict";
 
-var BLEGenericAccess = source("generic-access");
+var BLEGenericAccess = lib("generic-access");
 
 var Cylon = require("cylon");
 

@@ -12,8 +12,8 @@ Cylon.robot({
   },
 
   work: function(my) {
-    my.generic.getDeviceName(function(err, data){
-      if (!!err) {
+    my.generic.getDeviceName(function(err, data) {
+      if (err) {
         console.log("error: ", err);
         return;
       }

@@ -1,9 +1,8 @@
-/* jshint expr:true */
 "use strict";
 
 var Cylon = require("cylon");
 
-var BLEBatteryService = source("battery-service");
+var BLEBatteryService = lib("battery-service");
 
 describe("Cylon.Drivers.BLE.BLEBatteryService", function() {
   var driver;

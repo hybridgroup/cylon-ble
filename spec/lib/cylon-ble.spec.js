@@ -1,14 +1,13 @@
-/* jshint expr:true */
 "use strict";
 
-var mod = source("cylon-ble");
+var mod = lib("cylon-ble");
 
-var Central = source("central");
+var Central = lib("central");
 
 var Drivers = {
-  "ble-battery-service": source("battery-service"),
-  "ble-generic-access": source("generic-access"),
-  "ble-device-information": source("device-information")
+  "ble-battery-service": lib("battery-service"),
+  "ble-generic-access": lib("generic-access"),
+  "ble-device-information": lib("device-information")
 };
 
 describe("Cylon.BLE", function() {
