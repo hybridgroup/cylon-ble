@@ -1,6 +1,6 @@
 "use strict";
 
-var mod = lib("cylon-ble");
+var mod = lib("../");
 
 var Central = lib("central");
 
