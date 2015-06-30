@@ -7,8 +7,8 @@ before_install:
   - "mkdir -p ~/.npm"
 install:
   - sudo apt-get install --force-yes libbluetooth-dev
-  - npm install -g node-gyp
-  - node-gyp install
+  - npm install -g node-gyp-install
+  - node-gyp-install
   - npm install
   - npm install git://github.com/hybridgroup/cylon.git
   - npm install -g istanbul codeclimate-test-reporter
