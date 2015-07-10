@@ -1,2 +1,3 @@
 rules:
   camelcase: 0
+  no-path-concat: 0
