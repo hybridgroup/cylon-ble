@@ -54,7 +54,8 @@ describe("Central", function() {
       adaptor.connect(callback);
     });
 
-    it("starts scanning for peripherals", function() {
+    it("starts scanning for peripherals when powered on", function() {
+      bleConnect.on.yield("poweredOn");
       expect(bleConnect.startScanning).to.be.called;
     });
 
