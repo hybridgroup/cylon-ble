@@ -5,7 +5,8 @@ var Central = require("./lib/central");
 var Drivers = {
   "ble-battery-service": require("./lib/battery-service"),
   "ble-generic-access": require("./lib/generic-access"),
-  "ble-device-information": require("./lib/device-information")
+  "ble-device-information": require("./lib/device-information"),
+  "ble-characteristic": require("./lib/characteristic")
 };
 
 module.exports = {
