@@ -21,7 +21,7 @@ describe("Cylon.BLE", function() {
   describe("#drivers", function() {
     it("is an array of supplied drivers", function() {
       expect(mod.drivers).to.be.eql(
-        ["ble-battery-service", "ble-generic-access", 
+        ["ble-battery-service", "ble-generic-access",
          "ble-device-information", "ble-characteristic"]
       );
     });
