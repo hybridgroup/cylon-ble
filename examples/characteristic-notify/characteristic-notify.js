@@ -17,7 +17,7 @@ Cylon.robot({
 
   work: function(my) {
     my.wiced.notifyCharacteristic(function(err, data) {
-      if (!!err) {
+      if (err) {
         console.log("Error: ", err);
         return;
       }
