@@ -16,7 +16,7 @@ Cylon.robot({
 
   work: function(my) {
     my.wiced.readCharacteristic(function(err, data) {
-      if (!!err) {
+      if (err) {
         console.log("Error: ", err);
         return;
       }
