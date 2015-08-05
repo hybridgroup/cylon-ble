@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.7.0 - Add support for direct characteristic read/write/notify
+
 Version 0.6.1 - Correctly bump dependencies
 
 Version 0.6.0 - Use Cylon 1.1.0
