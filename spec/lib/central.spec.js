@@ -10,7 +10,7 @@ describe("Central", function() {
 
   beforeEach(function() {
     adaptor = new Central({
-      uuid: "uuid",
+      uuid: "uuid"
     });
   });
 
@@ -44,7 +44,7 @@ describe("Central", function() {
       ble = adaptor.bleConnect = {
         on: stub(),
         startScanning: stub(),
-        stopScanning: stub(),
+        stopScanning: stub()
       };
 
       emit = adaptor.emit = stub();
