@@ -14,14 +14,14 @@ Cylon.robot({
   devices: {
     wiced: {
       driver: "ble-characteristic",
-      serviceId: "739298b687b64984a5dcbdc18b068985",
-      characteristicId: "33ef91133b55413eb553fea1eaada459",
+      serviceId: "180f",
+      characteristicId: "2a19",
       connection: "bluetooth"
     }
   },
 
   work: function(my) {
-    my.wiced.notifyCharacteristic(function(err, data) {
+    my.wiced.readCharacteristic(function(err, data) {
       if (err) { return console.error("Error: ", err); }
       console.log("Data: ", data);
     });
