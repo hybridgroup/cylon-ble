@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.7.1 - Lock noble to version 1.0.2 for now
+
 Version 0.7.0 - Add support for direct characteristic read/write/notify
 
 Version 0.6.1 - Correctly bump dependencies
