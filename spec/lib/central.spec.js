@@ -71,14 +71,14 @@ describe("Central", function() {
       });
 
       it("will connect to the specified peripheral", function() {
-        var peripheral = { uuid: "uuid" };
+        var peripheral = { id: "uuid" };
 
         expect(callback).to.not.be.called;
 
         ble.on.withArgs("discover").yield(peripheral);
 
         it("adds the peripheral to #connectedPeripherals", function() {
-          var p = { connected: false, peripheral: { uuid: "uuid" } };
+          var p = { connected: false, peripheral: { id: "uuid" } };
           expect(adaptor.connectedPeripherals.uuid).to.be.eql(p);
           expect(ble.stopScanning).to.be.called;
         });
