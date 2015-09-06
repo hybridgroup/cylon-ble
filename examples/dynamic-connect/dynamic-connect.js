@@ -10,8 +10,8 @@ Cylon.robot({
   connectBLE: function(peripheral) {
     if (this.connected) { return; }
 
-    console.log(peripheral.advertisement.localName, peripheral.uuid);
     this.bluetooth.connectPeripheral(peripheral.uuid, peripheral, function() {
+      console.log(peripheral.advertisement.localName, peripheral.uuid);
       this.connected = true;
       this.device("blething",
                   {connection: "bluetooth", driver: "ble-device-information"});
