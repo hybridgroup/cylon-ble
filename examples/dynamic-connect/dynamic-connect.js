@@ -15,13 +15,15 @@ Cylon.robot({
       this.connected = true;
       this.device("blething",
                   {connection: "bluetooth", driver: "ble-device-information"});
-      this.devices.blething.getManufacturerName(function(err, data) {
-        if (err) {
-          console.log("error: ", err);
-          return;
-        }
-        console.log("data: ", data);
-      });
+      this.startDevice(this.devices.blething, function() {
+        this.devices.blething.getManufacturerName(function(err, data) {
+          if (err) {
+            console.log("error: ", err);
+            return;
+          }
+          console.log("data: ", data);
+        });
+      }.bind(this));
     }.bind(this));
   },
 
