@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.8.0 - Update to noble 1.1.x, improve characteristic driver, dynamic peripherals
+
 Version 0.7.1 - Lock noble to version 1.0.2 for now
 
 Version 0.7.0 - Add support for direct characteristic read/write/notify
