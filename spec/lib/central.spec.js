@@ -257,7 +257,7 @@ describe("Central", function() {
       adaptor.connectedPeripherals.uuid = {};
 
       characteristic = {
-        uuid: "characteristicId",
+        uuid: "characteristicId"
       };
 
       service = {
@@ -272,7 +272,7 @@ describe("Central", function() {
         services: {}
       };
 
-      adaptor._connectedPeripheral = function() {return peripheral};
+      adaptor._connectedPeripheral = function() { return peripheral; };
 
       adaptor.connectedPeripherals.uuid.services = {};
     });
@@ -280,8 +280,12 @@ describe("Central", function() {
     context("if #isConnected is true", function() {
       beforeEach(function() {
         adaptor.isConnected = true;
-        adaptor._connectedServices = function() { return {"serviceId": service} };
-        adaptor._connectedCharacteristics = function() { return {"characteristicId": characteristic} };
+        adaptor._connectedServices = function() {
+          return { serviceId: service };
+        };
+        adaptor._connectedCharacteristics = function() {
+          return { characteristicId: characteristic };
+        };
         adaptor.getCharacteristic("serviceId", "characteristicId", callback);
       });
 
@@ -293,9 +297,11 @@ describe("Central", function() {
     context("if #isConnected is false", function() {
       beforeEach(function() {
         adaptor.isConnected = false;
-        adaptor._connectedService = function() { return service };
-        adaptor._connectedCharacteristics = function() { return {} };
-        adaptor._connectedCharacteristic = function() { return characteristic };
+        adaptor._connectedService = function() { return service; };
+        adaptor._connectedCharacteristics = function() { return {}; };
+        adaptor._connectedCharacteristic = function() {
+          return characteristic;
+        };
         adaptor.getCharacteristic("serviceId", "characteristicId", callback);
       });
 
