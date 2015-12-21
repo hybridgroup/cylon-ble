@@ -243,7 +243,7 @@ describe("Central", function() {
       );
 
       expect(characteristic.notify).to.be.calledWith("state");
-      expect(characteristic.on).to.be.calledWith("read");
+      expect(characteristic.on).to.be.calledWith("data");
 
       expect(callback).to.be.calledWith(null, "data");
     });
@@ -256,32 +256,46 @@ describe("Central", function() {
       callback = spy();
       adaptor.connectedPeripherals.uuid = {};
 
-      characteristic = {};
+      characteristic = {
+        uuid: "characteristicId",
+      };
 
       service = {
-        discoverCharacteristics: stub().yields(null, [characteristic])
+        uuid: "serviceId",
+        discoverCharacteristics: stub().yields(null, [characteristic]),
+        characteristics: {}
       };
 
       peripheral = adaptor.connectedPeripherals.uuid.peripheral = {
         connect: stub().yields(),
-        discoverServices: stub().yields(null, [service])
+        discoverServices: stub().yields(null, [service]),
+        services: {}
       };
-    });
 
-    context("if #isConnected is false", function() {
-      beforeEach(function() {
-        adaptor.isConnected = false;
-      });
+      adaptor._connectedPeripheral = function() {return peripheral};
 
-      it("triggers the callback with an error", function() {
-        adaptor.getCharacteristic("serviceId", "characteristicId", callback);
-        expect(callback).to.be.calledWith("Not connected", null);
-      });
+      adaptor.connectedPeripherals.uuid.services = {};
     });
 
     context("if #isConnected is true", function() {
       beforeEach(function() {
         adaptor.isConnected = true;
+        adaptor._connectedServices = function() { return {"serviceId": service} };
+        adaptor._connectedCharacteristics = function() { return {"characteristicId": characteristic} };
+        adaptor.getCharacteristic("serviceId", "characteristicId", callback);
+      });
+
+      it("triggers the callback with the cached characteristic", function() {
+        expect(callback).to.be.calledWith(null, characteristic);
+      });
+    });
+
+    context("if #isConnected is false", function() {
+      beforeEach(function() {
+        adaptor.isConnected = false;
+        adaptor._connectedService = function() { return service };
+        adaptor._connectedCharacteristics = function() { return {} };
+        adaptor._connectedCharacteristic = function() { return characteristic };
         adaptor.getCharacteristic("serviceId", "characteristicId", callback);
       });
 
@@ -289,14 +303,12 @@ describe("Central", function() {
         expect(peripheral.connect).to.be.called;
       });
 
-      it("discovers serivces through the peripheral", function() {
-        expect(peripheral.discoverServices).to.be.calledWith(["serviceId"]);
+      it("discovers services through the peripheral", function() {
+        expect(peripheral.discoverServices).to.be.calledWith(null);
       });
 
       it("discovers the service's characteristics", function() {
-        expect(service.discoverCharacteristics).to.be.calledWith(
-          ["characteristicId"]
-        );
+        expect(service.discoverCharacteristics).to.be.calledWith(null);
       });
 
       it("triggers the callback with the characteristic", function() {
