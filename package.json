@@ -43,7 +43,7 @@
 
   "dependencies": {
     "cylon": "^1.2.0",
-    "noble": "^1.1.0",
+    "noble": "^1.2.0",
     "async": "^1.4.0"
   }
 }
