@@ -90,6 +90,7 @@ describe("Central", function() {
     context("if no UUID was provided", function() {
       beforeEach(function() {
         adaptor.uuid = null;
+        adaptor.scanMode = true;
         adaptor.connect(callback);
       });
 
