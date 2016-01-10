@@ -128,4 +128,4 @@ For the release history, please go to [https://github.com/hybridgroup/cylon-gpio
 
 ## License
 
-Copyright (c) 2014-2015 The Hybrid Group. Licensed under the Apache 2.0 license.
+Copyright (c) 2014-2016 The Hybrid Group. Licensed under the Apache 2.0 license.
