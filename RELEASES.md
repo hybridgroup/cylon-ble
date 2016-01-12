@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.10.0 - Update to noble 1.3.x, passthru cache services/characteristics, more refactors
+
 Version 0.9.0 - Update to noble 1.2.x, cache services/characteristics, many refactors
 
 Version 0.8.0 - Update to noble 1.1.x, improve characteristic driver, dynamic peripherals
