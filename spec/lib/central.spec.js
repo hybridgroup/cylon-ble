@@ -264,28 +264,29 @@ describe("Central", function() {
       service = {
         uuid: "serviceId",
         discoverCharacteristics: stub().yields(null, [characteristic]),
-        characteristics: {}
+        characteristics: [characteristic]
       };
 
       peripheral = adaptor.connectedPeripherals.uuid.peripheral = {
         connect: stub().yields(),
         discoverServices: stub().yields(null, [service]),
-        services: {}
+        services: [service],
+        state: "disconnected"
       };
 
-      adaptor._connectedPeripheral = function() { return peripheral; };
+      adaptor.connectedPeripheral = function() { return peripheral; };
 
       adaptor.connectedPeripherals.uuid.services = {};
     });
 
-    context("if #isConnected is true", function() {
+    context("when peripheral is connected", function() {
       beforeEach(function() {
-        adaptor.isConnected = true;
+        peripheral.state = "connected";
         adaptor._connectedServices = function() {
-          return { serviceId: service };
+          return [service];
         };
         adaptor._connectedCharacteristics = function() {
-          return { characteristicId: characteristic };
+          return [characteristic];
         };
         adaptor.getCharacteristic("serviceId", "characteristicId", callback);
       });
@@ -295,31 +296,40 @@ describe("Central", function() {
       });
     });
 
-    context("if #isConnected is false", function() {
-      beforeEach(function() {
-        adaptor.isConnected = false;
-        adaptor._connectedService = function() { return service; };
-        adaptor._connectedCharacteristics = function() { return {}; };
-        adaptor._connectedCharacteristic = function() {
-          return characteristic;
-        };
-        adaptor.getCharacteristic("serviceId", "characteristicId", callback);
+    context("when peripheral is not connected", function() {
+      context("can get services", function() {
+        beforeEach(function() {
+          peripheral.state = "disconnected";
+          adaptor._connectedCharacteristics = function() {
+            return service.characteristics;
+          };
+          adaptor.getCharacteristic("serviceId", "characteristicId", callback);
+        });
+
+        it("connects to the peripheral", function() {
+          expect(peripheral.connect).to.be.called;
+        });
+
+        it("discovers services through the peripheral", function() {
+          expect(peripheral.discoverServices).to.be.calledWith(null);
+        });
       });
 
-      it("connects to the peripheral", function() {
-        expect(peripheral.connect).to.be.called;
-      });
+      context("can get characteristics", function() {
+        beforeEach(function() {
+          peripheral.state = "disconnected";
+          adaptor._connectedServices = function() { return [service]; };
+          adaptor._connectedCharacteristics = function() { return null; };
+          adaptor.getCharacteristic("serviceId", "characteristicId", callback);
+        });
 
-      it("discovers services through the peripheral", function() {
-        expect(peripheral.discoverServices).to.be.calledWith(null);
-      });
+        it("connects to the peripheral", function() {
+          expect(peripheral.connect).to.be.called;
+        });
 
-      it("discovers the service's characteristics", function() {
-        expect(service.discoverCharacteristics).to.be.calledWith(null);
-      });
-
-      it("triggers the callback with the characteristic", function() {
-        expect(callback).to.be.calledWith(null, characteristic);
+        it("discovers the service's characteristics", function() {
+          expect(service.discoverCharacteristics).to.be.calledWith(null);
+        });
       });
     });
   });
