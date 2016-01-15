@@ -1,6 +1,6 @@
 {
   "name": "cylon-ble",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Cylon module for Bluetooth Low Energy (LE) peripherals",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-ble/issues",
